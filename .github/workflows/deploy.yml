@@ -1,0 +1,47 @@
+name: Publish replica to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the verified snapshot
+        uses: actions/checkout@v4
+      - name: Verify and extract the website
+        run: |
+          sha256sum --check SHA256SUMS
+          mkdir -p _site
+          cat site.tar.gz.part-* | tar -xz --no-same-owner -C _site
+          test -f _site/index.html
+          test -f _site/.nojekyll
+          python3 - <<'PY'
+          from pathlib import Path
+          total = sum(p.stat().st_size for p in Path('_site').rglob('*') if p.is_file())
+          assert total < 1_000_000_000, f'Site is too large: {total} bytes'
+          print(f'Verified site: {total:,} bytes')
+          PY
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload the website artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
