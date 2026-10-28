@@ -36,10 +36,9 @@ jobs:
           assert total < 1_000_000_000, f'Site is too large: {total} bytes'
           print(f'Verified site: {total:,} bytes')
           PY
-      - name: Add the Punto de Masa homepage
+      - name: Build the Punto de Masa website
         run: |
-          cp index.html _site/index.html
-          cp -R panaderia _site/panaderia
+          python3 panaderia/build.py --output _site
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload the website artifact

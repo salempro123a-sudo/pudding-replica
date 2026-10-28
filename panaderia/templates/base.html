@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f3e9">
+  <meta name="description" content="$description">
+  <title>$title</title>
+  <link rel="canonical" href="$canonical">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_PE">
+  <meta property="og:title" content="$title">
+  <meta property="og:description" content="$description">
+  <meta property="og:url" content="$canonical">
+  <meta property="og:image" content="https://salempro123a-sudo.github.io${base}panaderia/assets/hero.png">
+  <link rel="icon" href="${base}panaderia/assets/logo.png?v=$version">
+  <link rel="stylesheet" href="${base}panaderia/assets/site.css?v=$version">
+  <script id="product-data" type="application/json">$product_data</script>
+  <script src="${base}panaderia/assets/site.js?v=$version" defer></script>
+</head>
+<body data-page="$section">
+  <a class="skip" href="#contenido">Ir al contenido</a>
+  <div class="topbar">HECHO A MANO. HORNEADO EN CUSCO. DISFRUTADO SIN PRISA.</div>
+  <header class="site-header">
+    <div class="nav wrap">
+      <a class="brand" href="$base" aria-label="Punto de Masa, inicio"><img src="${base}panaderia/assets/logo.png?v=$version" alt="Punto de Masa, panadería en Cusco" width="230" height="76"></a>
+      <nav class="nav-links" id="navigation" aria-label="Navegación principal">
+        <a href="$base" $home>Inicio</a>
+        <a href="${base}del-horno/" $catalog>Del horno</a>
+        <a href="${base}nuestra-historia/" $story>Nuestra historia</a>
+        <a href="${base}tiendas/" $shops>Visítanos</a>
+      </nav>
+      <button class="bag-button" id="open-cart" aria-haspopup="dialog" aria-controls="cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 7h14l1 14H4L5 7Z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg><span class="bag-label">Mi pedido</span><span class="count" id="cart-count">0</span></button>
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navigation" id="menu-toggle"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    </div>
+  </header>
+  <main id="contenido">$body</main>
+  <footer class="footer">
+    <div class="footer-main wrap">
+      <div><a class="footer-brand" href="$base">Punto de Masa.</a><p>Pan hecho con tiempo.<br>Compartido con cariño, en Cusco.</p></div>
+      <nav aria-label="Explora Punto de Masa"><span class="eyebrow">PASA Y CONOCE</span><a href="${base}del-horno/">Del horno</a><a href="${base}nuestra-historia/">Nuestra historia</a><a href="${base}tiendas/">Nuestras tiendas</a></nav>
+      <div><span class="eyebrow">NOS VEMOS EN CUSCO</span><p>Centro Histórico y Wanchaq.<br>Dos puertas abiertas al buen pan.</p><a class="text-link" href="${base}tiendas/">Conoce los horarios <span aria-hidden="true">→</span></a></div>
+    </div>
+    <div class="footer-bottom wrap"><span>© <span id="year">2026</span> Punto de Masa</span><span>Hecho con harina, agua y oficio.</span><a href="$base">Volver al inicio <span aria-hidden="true">↑</span></a></div>
+  </footer>
+  <dialog class="cart-dialog" id="cart" aria-labelledby="cart-title">
+    <div class="drawer-head"><div><p class="eyebrow">UN POCO DE PAN PARA LLEVAR</p><h2 id="cart-title">Tu próximo antojo.</h2></div><button class="close" id="close-cart" aria-label="Cerrar mi pedido" autofocus>×</button></div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-bottom"><div class="cart-total"><span>Total</span><strong id="cart-total">S/ 0.00</strong></div><label for="shop-select">La tienda que prefieres</label><select id="shop-select"><option value="Centro Histórico">Centro Histórico</option><option value="Wanchaq">Wanchaq</option></select><button class="button" id="download-order" disabled>Guardar mi lista <span aria-hidden="true">↓</span></button><p class="cart-help">Descarga tu selección y preséntala en tienda.</p><p class="cart-message" id="cart-message" role="status" aria-live="polite"></p></div>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <noscript><p class="noscript-note wrap">Puedes recorrer nuestras páginas y consultar los productos. Activa JavaScript para preparar tu lista de compra.</p></noscript>
+</body>
+</html>
